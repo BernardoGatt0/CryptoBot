@@ -1,7 +1,7 @@
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 import requests
-import locale
+# import locale
 
 async def bitcoin(update: Update, context: ContextTypes.DEFAULT_TYPE):
     url = f'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=brl'
@@ -12,7 +12,7 @@ async def bitcoin(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text('Limite de requisições da API atingido, por favor aguarde e tente novamente')
     except:
         preco = dados['bitcoin']['brl']
-        preco = locale.currency(preco, grouping=True)
+        # preco = locale.currency(preco, grouping=True)
         await update.message.reply_text(f'O preço do BTC é: {preco}')
 
 async def ethereum(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -25,7 +25,7 @@ async def ethereum(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text('Limite de requisições da API atingido, por favor aguarde e tente novamente')
     except:
         preco = dados['ethereum']['brl']
-        preco = locale.currency(preco, grouping=True)
+        # preco = locale.currency(preco, grouping=True)
         await update.message.reply_text(f'O preço do ETH é: {preco}')
 
 async def usdc(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -37,14 +37,14 @@ async def usdc(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text('Limite de requisições da API atingido, por favor aguarde e tente novamente')
     except:
         preco = dados['usd-coin']['brl']
-        preco = locale.currency(preco, grouping=True)
+        # preco = locale.currency(preco, grouping=True)
         await update.message.reply_text(f'O preço do USDC é: {preco}')
 
 async def hello(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(f'Hello {update.effective_user.first_name}')
 
 if __name__ == "__main__":
-    locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+    # locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
     TOKEN = "6629864176:AAFh8poTaPzKMjrkUfB5G0c779UrzSFMBpU"
     app = ApplicationBuilder().token(TOKEN).build()
 
